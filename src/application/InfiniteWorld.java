@@ -30,6 +30,7 @@ public class InfiniteWorld extends Canvas {
     private static final KeyCode[] ZOOM_OUT = { KeyCode.MINUS, KeyCode.PAGE_UP };
     private static final KeyCode[] BUILD = { KeyCode.SPACE };
     private static final KeyCode[] DEBUG = { KeyCode.F3 };
+    private static final KeyCode[] SPEED = { KeyCode.SHIFT };
 
     private static final double ZOOM_RATIO = 2;
     private static final long SAVE_INTERVAL = 10000; // 10 seconds
@@ -83,6 +84,9 @@ public class InfiniteWorld extends Canvas {
 	if (isKey(event, DOWN)) {
 	    direction.addDown();
 	}
+	if (isKey(event, SPEED)) {
+	    speed = 1;
+	}
     }
 
     private void keyRelease(KeyEvent event) {
@@ -110,6 +114,10 @@ public class InfiniteWorld extends Canvas {
 	if (isKey(event, DEBUG)) {
 	    debug ^= true;
 	}
+	if (isKey(event, SPEED)) {
+	    speed = 0.1;
+	}
+
     }
 
     private boolean isKey(KeyEvent event, KeyCode[] keys) {
